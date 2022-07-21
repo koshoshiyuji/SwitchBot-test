@@ -46,14 +46,6 @@ set(
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Logging.cpp
 )
 
-set(
-    SRC_SIMPLEBLE_C_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/src_c/simpleble.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src_c/adapter.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src_c/peripheral.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src_c/logging.cpp
-)
-
 # Detect the operating system and load the necessary dependencies
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
     message(STATUS "Linux Host Detected")
@@ -215,8 +207,6 @@ set(
 
 add_library(simpleble-static STATIC ${SRC_SIMPLEBLE_FILES})
 add_library(simpleble SHARED ${SRC_SIMPLEBLE_FILES})
-add_library(simpleble-c-static STATIC ${SRC_SIMPLEBLE_C_FILES})
-add_library(simpleble-c SHARED ${SRC_SIMPLEBLE_C_FILES})
 
 set_property(TARGET simpleble-static PROPERTY CXX_STANDARD 17)
 set_property(TARGET simpleble PROPERTY CXX_STANDARD 17)
