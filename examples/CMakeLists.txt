@@ -27,8 +27,3 @@ add_subdirectory(cpp/write)
 add_subdirectory(cpp/notify)
 add_subdirectory(cpp/notify_multi)
 add_subdirectory(cpp/switchbot)
-
-# C
-add_subdirectory(c/notify)
-add_subdirectory(c/connect)
-add_subdirectory(c/scan)
