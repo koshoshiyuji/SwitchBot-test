@@ -210,57 +210,40 @@ add_library(simpleble SHARED ${SRC_SIMPLEBLE_FILES})
 
 set_property(TARGET simpleble-static PROPERTY CXX_STANDARD 17)
 set_property(TARGET simpleble PROPERTY CXX_STANDARD 17)
-set_property(TARGET simpleble-c-static PROPERTY CXX_STANDARD 17)
-set_property(TARGET simpleble-c PROPERTY CXX_STANDARD 17)
 
 set_property(TARGET simpleble-static PROPERTY POSITION_INDEPENDENT_CODE ON)
 set_property(TARGET simpleble PROPERTY POSITION_INDEPENDENT_CODE ON)
-set_property(TARGET simpleble-c-static PROPERTY POSITION_INDEPENDENT_CODE ON)
-set_property(TARGET simpleble-c PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 set_property(TARGET simpleble PROPERTY WINDOWS_EXPORT_ALL_SYMBOLS ON)
-set_property(TARGET simpleble-c PROPERTY WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 target_include_directories(simpleble-static PRIVATE ${SIMPLE_BLE_ALL_INCLUDE_DIRS})
 target_include_directories(simpleble PRIVATE ${SIMPLE_BLE_ALL_INCLUDE_DIRS})
-target_include_directories(simpleble-c-static PRIVATE ${SIMPLE_BLE_ALL_INCLUDE_DIRS})
-target_include_directories(simpleble-c PRIVATE ${SIMPLE_BLE_ALL_INCLUDE_DIRS})
 
 target_link_libraries(simpleble-static PRIVATE fmt::fmt-header-only)
 target_link_libraries(simpleble PRIVATE fmt::fmt-header-only)
 target_link_libraries(simpleble-static PUBLIC ${EXTERNAL_LIBRARIES})
 target_link_libraries(simpleble PUBLIC ${EXTERNAL_LIBRARIES})
-target_link_libraries(simpleble-c-static PUBLIC simpleble-static)
-target_link_libraries(simpleble-c PUBLIC simpleble-static)
 
 # Append any compilation flags to each specific target
 
 foreach(DEFINITION ${COMPILE_DEFINITIONS})
     target_compile_definitions(simpleble-static PRIVATE ${DEFINITION})
     target_compile_definitions(simpleble PRIVATE ${DEFINITION})
-    target_compile_definitions(simpleble-c-static PRIVATE ${DEFINITION})
-    target_compile_definitions(simpleble-c PRIVATE ${DEFINITION})
 endforeach()
 
 foreach(OPTION ${COMPILE_OPTIONS})
     target_compile_options(simpleble-static PRIVATE ${OPTION})
     target_compile_options(simpleble PRIVATE ${OPTION})
-    target_compile_options(simpleble-c-static PRIVATE ${OPTION})
-    target_compile_options(simpleble-c PRIVATE ${OPTION})
 endforeach()
 
 foreach(OPTION ${LINK_OPTIONS})
     target_link_options(simpleble-static PRIVATE ${OPTION})
     target_link_options(simpleble PRIVATE ${OPTION})
-    target_link_options(simpleble-c-static PRIVATE ${OPTION})
-    target_link_options(simpleble-c PRIVATE ${OPTION})
 endforeach()
 
 foreach(OPTION ${PUBLIC_LINK_OPTIONS})
     target_link_options(simpleble-static PUBLIC ${OPTION})
     target_link_options(simpleble PUBLIC ${OPTION})
-    target_link_options(simpleble-c-static PUBLIC ${OPTION})
-    target_link_options(simpleble-c PUBLIC ${OPTION})
 endforeach()
 
 # Export the variables needed by the parent project
