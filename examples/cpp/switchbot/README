@@ -1,0 +1,4 @@
+Build command example:
+
+g++ -fPIC -std=c++17 $(python3.7-config --cflags --includes) -I /home/pi/boost_1_67_0 -I /home/pi/SimpleBLE/include -I /usr/include/dbus-1.0 switchbot.cpp ../common/utils.cpp -o switchbot -L /home/pi/boost_1_67_0/stage/lib/ -L /home/pi/SimpleBLE/examples/build/bin $(python3.7-config --ldflags --libs) -lboost_python37 -lboost_system -lsimpleble-static -lsimplebluez-static -lsimpledbus-static -ldbus-1
+

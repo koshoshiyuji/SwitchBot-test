@@ -1,0 +1,23 @@
+{
+    "statusCode": 100,
+    "body": {
+        "deviceList": [
+            {
+                "deviceId": "C68796708334",
+                "deviceName": "\u30dc\u30c3\u30c8 34",
+                "deviceType": "Bot",
+                "enableCloudService": false,
+                "hubDeviceId": "000000000000"
+            },
+            {
+                "deviceId": "E1340DAB1C2F",
+                "deviceName": "\u30dc\u30c3\u30c8 2F",
+                "deviceType": "Bot",
+                "enableCloudService": false,
+                "hubDeviceId": "000000000000"
+            }
+        ],
+        "infraredRemoteList": []
+    },
+    "message": "success"
+}

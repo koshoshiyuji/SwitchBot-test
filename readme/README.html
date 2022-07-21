@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="switchbot%E5%88%B6%E5%BE%A1%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0">SwitchBot制御プログラム</h1>
+<p>SwitchBot制御プログラム（以後、switchbot）は、Raspberry PiおよびLinux(Ubuntu)環境で、SwitchBotを制御するサンプルプログラムです。
+プログラムには、Python版とc++版があります。</p>
+<h3 id="switchbot">SwitchBot</h3>
+<p><a href="https://www.switch-bot.com">SwitchBot</a>は、すべてのスイッチとボタンを機械的に制御するスマートIoTロボットです。スマートフォンアプリ（<a href="https://itunes.apple.com/app/SwitchBot/id1087374760?mt=8">iOS</a>または<a href="https://play.google.com/store/apps/details?id=com.theSwitchBot.SwitchBot">Android</a>)でボットを制御できます。</p>
+<h2 id="%E6%8F%90%E4%BE%9B%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%B8%80%E5%BC%8F">提供ファイル一式</h2>
+<p>/home/pi/SwitchBot/examples/cpp/switchbot下のファイルがswitchbotのご提供プログラム関連ファイル一式となります。</p>
+<pre class="hljs"><code><div>pi@raspberrypi:~/SwitchBot-test/examples/cpp/switchbot $ ls -l
+合計 76
+-rw-r--r-- 1 pi pi  1506  7月 22 04:44 CMakeLists.txt
+-rw-r--r-- 1 pi pi  1504  7月 22 04:53 CMakeLists.txt.linux
+-rwxr--r-- 1 pi pi  1506  7月 22 04:23 CMakeLists.txt.raspi
+-rw-r--r-- 1 pi pi 15595  7月 17 11:24 argparse.hpp
+-rw-r--r-- 1 pi pi   348  7月 17 17:26 device_list.json
+-rw-r--r-- 1 pi pi   652  7月 17 17:26 device_list_lint.json
+-rwxr-xr-x 1 pi pi   848  7月 17 12:43 get_device_list.sh
+-rw-r--r-- 1 pi pi 10819  7月 19 17:55 switchbot.cpp
+-rw-r--r-- 1 pi pi    97  7月 17 12:43 switchbot_open_token.txt
+-rwxr--r-- 1 pi pi 11833  7月 20 09:11 switchbot_py3.py
+</div></code></pre>
+<h2 id="python%E7%89%88">Python版</h2>
+<p>Python版は、主に<a href="https://www.raspberrypi.org">Raspberry Pi</a>環境でSwitchBotを制御するための超軽量ソリューションを提供することを目的としています。SwitchBotの開発会社であるOpenWonderLabs社よりGithubに提供されている、python-hostリポジトリのサンプルをもとに作成しました。</p>
+<p>python-hostディストリビューションは、Python 2.7でサポートされ、テストされていますが、python3環境では一部前提ライブラリが提供されなくなっています。今回は、python3環境で稼働するため、新しいスタックを前提にプログラムを作成、テストしています。</p>
+<h3 id="%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">インストール</h3>
+<p>前提：</p>
+<ul>
+<li>Raspberry Pi 4</li>
+<li>SwitchBot Bot</li>
+<li>Raspbian導入済みSD Card(Debian GNU/Linux 10 (buster)(https://www.raspberrypi.org/downloads/raspbian/))</li>
+</ul>
+<p>今回は設定済みのSD Cardをご提供しますので、そちらを使いPiを起動してください。その場合、以下1.~2.の操作は不要です。ご提供するRaspbian環境のログイン情報等は、以下の通りです。</p>
+<ul>
+<li>ユーザー: pi</li>
+<li>パスワード: raspberrypi</li>
+<li>使用可能リモートアクセスサービス: ssh, vnc, samba</li>
+</ul>
+<ol>
+<li>新しいPiを起動し、コマンドプロンプトを開きます。</li>
+<li>前提ライブラリをインストールします。</li>
+</ol>
+<h4 id="python3%E3%81%A8%E6%96%B0%E3%81%97%E3%81%84bluetooth%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88">Python3と新しいBluetoothスタックのサポート</h4>
+<p>元の<code>switchbot.py</code>スクリプトはPython2とbluepyでのみ機能し、最新のBluezリリースで廃止された古いutils（<code>hciconfig</code>や<code>hcitool</code>など）に依存しています。</p>
+<p>Debian 11 &quot;Bullseye&quot;、Raspberry Pi OS、またはUbuntu21.10以降に必要な依存関係をインストールするには：</p>
+<pre class="hljs"><code><div>sudo apt install python3-bluez
+</div></code></pre>
+<p>古いバージョンのUbuntu/Raspbianの場合：</p>
+<pre class="hljs"><code><div>sudo apt-get install python3-pip
+sudo apt-get install libbluetooth-dev
+pip3 install pybluez
+sudo apt-get install libboost-python-dev
+sudo apt-get install libboost-thread-dev
+pip3 install gattlib
+</div></code></pre>
+<p>何らかの理由でgattlibのインストールが失敗した場合はソースからビルドします。</p>
+<pre class="hljs"><code><div>sudo apt-get install pkg-config python3-dev
+sudo apt-get install libglib2.0-dev
+
+pip3 download gattlib
+tar xvzf ./gattlib-0.20150805.tar.gz
+<span class="hljs-built_in">cd</span> gattlib-0.20150805/
+sed -ie <span class="hljs-string">'s/boost_python-py34/boost_python-py36/'</span> setup.py <span class="hljs-comment"># "py36" might be "py37" (for example). Check "python3 --version"</span>
+pip3 install .
+</div></code></pre>
+<h3 id="%E3%83%93%E3%83%AB%E3%83%89">ビルド</h3>
+<p>提供したプログラム一式をLinux環境の(インストールディレクトリ eg. SwitchBot-test)/examples/cpp/下に複製します。
+c++プログラムのビルドは以下の通り行います。</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> (インストールディレクトリ)/SwitchBot-test/examples/cpp/switchbot
+cp CMakeLists.txt.raspi CMakeLists.txt
+<span class="hljs-built_in">cd</span> (インストールディレクトリ)/SwitchBot-test/examples
+mkdir build
+<span class="hljs-built_in">cd</span> build
+cmake ..
+make
+</div></code></pre>
+<p>実行ファイルは下記の通り(インストールディレクトリ)/examples/build/bin/に作成されます。
+&quot;switchbot_open_token.txt&quot;の内容はPython版と同じく取得したトークンを記入してください。</p>
+<pre class="hljs"><code><div>pi@raspberrypi:~/SwitchBot/examples/build/bin $ ls switchbot*
+switchbot  switchbot_open_token.txt  switchbot_py3.py
+</div></code></pre>
+<h3 id="%E5%AE%9F%E8%A1%8C">実行</h3>
+<p>次の2つの方法で使用できます。</p>
+<ol>
+<li>デバイス名によるスキャンと対象デバイスを選択し、コマンド制御。</li>
+</ol>
+<pre class="hljs"><code><div>sudo python3 switchbot_py3.py -s -c press
+</div></code></pre>
+<ol start="2">
+<li>Macアドレス指定でコマンド制御。 （MACアドレスは事前に取得する必要があります）</li>
+</ol>
+<pre class="hljs"><code><div>sudo python3 switchbot_py3.py -d xx:xx:xx:xx:xx:xx -c press
+</div></code></pre>
+<ol start="3">
+<li>スマートフォンアプリより、ホームにSwitcBotを登録しておくことができます。その際、名前もつけられます。今回提供されているPython版のライブラリ等が不安定なため、事前にHome登録情報を取得し、スキャンの代わりとするモードを用意しました。--scanおよび--deviceのいずれも指定しない場合に利用されます。このモードでは、名前も表示可能です。</li>
+</ol>
+<pre class="hljs"><code><div>sudo python3 switchbot_py3.py -c press
+</div></code></pre>
+<p>Home情報取得のためにRaspberry Piはインターネットに接続する必要があります。また、事前に以下の手順で開発者トークンの取得が必要です。</p>
+<ol>
+<li>AppStoreまたはGooglePlayストアでSwitchBotアプリをダウンロードします</li>
+<li>SwitchBotアカウントを登録し、アカウントにログインします</li>
+<li>アプリ内でオープントークンを生成する</li>
+<li>Profile &gt; Preference に移動</li>
+<li>アプリバージョンを10回タップします。開発者向けオプションが表示されます</li>
+<li>[開発者向けオプション]をタップします</li>
+<li>[トークンを取得]をタップして、「switchbot_open_token.txt」に保存します</li>
+</ol>
+<p>コマンドは、press, on, off, settingsがあります。settingsは、バッテリー残量を表示します。
+なお、SwitchBotの押すモードとスイッチモードの切り替えは、スマートフォンアプリの設定で実行してください。</p>
+<p>ヘルプを表示するには</p>
+<pre class="hljs"><code><div>sudo python3 switchbot_py3.py --help
+</div></code></pre>
+<p>以下のようにコマンドオプションが表示されます。</p>
+<pre class="hljs"><code><div>pi@raspberrypi:~/SwitchBot/examples/build/bin $ ./switchbot --help
+usage: switchbot [OPTIONS]...
+
+switchbot control program
+
+keyword arguments:
+  --help, -h                  : show this help
+  --scan, -s                  : Run Switchbot in scan mode - scan devices to control
+  --scan-timeout VALUE        : Device scan timeout (default: 2 seconds)
+  --connect-timeout VALUE     : Device connection timeout (default: 2 seconds)
+  --device VALUE, -d VALUE    : Specify the address of a device to control
+  --interface VALUE, -i VALUE : Name of the bluetooth adapter (default: hci0 or whichever is the default)
+  --command VALUE, -c VALUE   : Specify the command to run (default: press). commands are press,on,off,open,close,pause,settings.
+  --refresh, -r               : Refresh local device list
+
+SwitchBot
+
+</div></code></pre>
+<h2 id="c%E7%89%88">c++版</h2>
+<p>c++版は、主にUbuntu環境でSwitchBotを制御するための超軽量ソリューションを提供することを目的としていますが、Raspberry Pi環境でも稼働を確認しています。今回c++での実装にあたり調べた範囲で、OpenWonderLabs社等より、c++の実装サンプルなどの提供はありませんでした。そのため、SwitchBot API-BLE等の情報と実際のテストにより、プログラムを作成しました。提供する機能はPython版と同じです。</p>
+<p>BLEへのアクセスには、クロスプラットフォームで利用できるSimpleBLEを使用しました。SimpleBLEは、シンプルさと使いやすさを求めて設計されたC++のクロスプラットフォームBLEライブラリです。すべてのプラットフォーム、ライブラリの各メジャーバージョンで一貫した動作と完全な上位互換性のある安定したAPIを提供します。
+結果的にPython版より安定した制御を行うことができました。</p>
+<h3 id="%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%83%97%E3%83%A9%E2%80%8B%E2%80%8B%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0">サポートされているプラ​​ットフォーム</h3>
+<table>
+<thead>
+<tr>
+<th>Windows</th>
+<th>Linux</th>
+<th>MacOS</th>
+<th>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows 10+</td>
+<td>Ubuntu 20.04+</td>
+<td>10.15+ (except 12.0, 12.1 and 12.2)</td>
+<td>15.0+</td>
+</tr>
+</tbody>
+</table>
+<p>記載されてはいませんが、Raspberry Pi 4環境でもc++プログラムが正常に稼働しました。</p>
+<h3 id="%E5%89%8D%E6%8F%90%E3%82%BD%E3%83%95%E3%83%88%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">前提ソフトのインストール</h3>
+<p>前提：</p>
+<ul>
+<li>libdbus-1-dev</li>
+</ul>
+<pre class="hljs"><code><div>sudo apt-get install libdbus-1-dev
+</div></code></pre>
+<h3 id="%E3%83%93%E3%83%AB%E3%83%89">ビルド</h3>
+<p>提供したプログラム一式をLinux環境の(インストールディレクトリ eg. SwitchBot-test)/examples/cpp/下に複製します。
+c++プログラムのビルドは以下の通り行います。</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> (インストールディレクトリ)/SwitchBot-test/examples/cpp/switchbot
+cp CMakeLists.txt.linux CMakeLists.txt
+<span class="hljs-built_in">cd</span> (インストールディレクトリ)/SwitchBot-test/examples
+mkdir build
+<span class="hljs-built_in">cd</span> build
+cmake ..
+make
+</div></code></pre>
+<p>実行ファイルは下記の通り(インストールディレクトリ)/examples/build/bin/に作成されます。
+&quot;switchbot_open_token.txt&quot;の内容はPython版と同じく取得したトークンを記入してください。</p>
+<pre class="hljs"><code><div>user@ubuntu:~/SwitchBot/examples/build/bin $ ls switchbot*
+switchbot  switchbot_open_token.txt  switchbot_py3.py
+</div></code></pre>
+<p>前提ライブラリの導入先が異なるなど、環境が異なる場合、CMakeLists.txtの内容を変更する必要があるかもしれません。</p>
+<h3 id="%E5%AE%9F%E8%A1%8C">実行</h3>
+<p>次の2つの方法で使用できます。</p>
+<ol>
+<li>デバイス名によるスキャンと対象デバイスを選択し、コマンド制御。</li>
+</ol>
+<pre class="hljs"><code><div>sudo ./switchbot -s -c press
+</div></code></pre>
+<ol start="2">
+<li>Macアドレス指定でコマンド制御。 （MACアドレスは事前に取得する必要があります）</li>
+</ol>
+<pre class="hljs"><code><div>sudo ./switchbot -d xx:xx:xx:xx:xx:xx -c press
+</div></code></pre>
+<ol start="3">
+<li>スマートフォンアプリより、ホームにSwitcBotを登録しておくことができます。その際、名前もつけられます。今回提供されているPython版のライブラリ等が不安定なため、事前にHome登録情報を取得し、スキャンの代わりとするモードを用意しました。--scanおよび--deviceのいずれも指定しない場合に利用されます。このモードでは、名前も表示可能です。
+Home情報取得ようトークンについては、Python版と同じです。</li>
+</ol>
+<pre class="hljs"><code><div>sudo ./switcbot -c press
+</div></code></pre>
+<p>コマンドは、Python版と同じです。</p>
+<p>ヘルプを表示するには</p>
+<pre class="hljs"><code><div>sudo ./switchbot -help
+</div></code></pre>
+<h2 id="%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3">アーキテクチャ</h2>
+<h3 id="%E3%83%AC%E3%82%A4%E3%83%A4%E3%81%A8%E3%81%9D%E3%81%AE%E6%A9%9F%E8%83%BD">レイヤとその機能</h3>
+<ul>
+<li>
+<p>外層</p>
+<ul>
+<li><code>SimpleBLE::Adapter</code>および<code>SimpleBLE::Peripheral</code>クラス。</li>
+<li>これらのオブジェクトは、それぞれ <code>SimpleBLE::AdapterBase</code>、<code>SimpleBLE::PeripheralBase</code>への共有ポインタを保持します。</li>
+</ul>
+</li>
+<li>
+<p>C-スタイル ラッパー層</p>
+<ul>
+<li>このレイヤーは、安全なCスタイルのラッパーであり、SimpleBLEを他の言語に統合できるようにCバインディングのサポートを提供します。</li>
+</ul>
+</li>
+<li>
+<p>セーフ層</p>
+<ul>
+<li><code>SimpleBLE::AdapterSafe</code> および <code>SimpleBLE::PeripheralSafe</code>クラス。</li>
+<li>これらのオブジェクトは <code>SimpleBLE::Adapter</code> および
+<code>SimpleBLE::Peripheral</code> オブジェクトへの例外を発生しないインターフェースを提供します。
+代わりに、関数が値を返す場合は<code>std ::optional &lt;T&gt; </code>オブジェクト、または元の関数が値を返さない場合は成功したかどうかを示すブール値を返します。機能的には元の関数と同じです。</li>
+</ul>
+</li>
+<li>
+<p>API層 (OS依存)</p>
+<ul>
+<li><code>SimpleBLE::AdapterBase</code> および <code>SimpleBLE::PeripheralBase</code>クラス。</li>
+<li>各OS環境で提供されるプライベートメソッドおよびプロパティを用い、外層で指定された完全なパブリックAPIを実装する必要があります。</li>
+<li>2つの便利なクラス、 <code>SimpleBLE::AdapterBuilder</code> および
+<code>SimpleBLE::PeripheralBuilder</code>が提供され、ビルドプロセス中にプライベートメソッドへのアクセスを許可します。</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E4%BD%BF%E7%94%A8%E4%BE%8B">使用例</h3>
+<p>SimpleBLEの使用方法については、switchbotプログラム以外に、ライブラリから提供されているサンプルを参照してください。
+サフィックスに_safeを含むサンプルは、ライブラリの_noexcept_バージョンを使用します。</p>
+<ul>
+<li><code>list_adapters</code>_: 使用可能なすべてのアダプターをリストします。</li>
+<li><code>scan (cpp)</code>_ &amp; <code>scan (c)</code>_: 近くのBLEデバイスをスキャンします。</li>
+<li><code>connect (cpp)</code>_ &amp; <code>connect_safe (cpp)</code>_ &amp; <code>connect (c)</code>_: BLEデバイスに接続し、そのサービスと特性を一覧表示します。</li>
+<li><code>read</code>_: 特性の値を読み取ります。</li>
+<li><code>write</code>_: 特性の値を書き込みます。</li>
+<li><code>notify (cpp)</code>_ &amp; <code>notify (c)</code>_: 特性に関する通知を有効にします。</li>
+</ul>
+<h3 id="%E4%B8%A6%E8%A1%8C%E6%80%A7">並行性</h3>
+<p>SimpleBLEを使用してアプリケーションを設計する場合、並行性を考慮に入れる必要があります。内部的にライブラリは、非同期操作を処理するためにオペレーティングシステムのスレッドプールに依存しています。
+このため、特にスレッド処理が大幅に遅延した時、Bluetoothスタックのポーリングで競合が発生し、プログラムがクラッシュまたはフリーズする可能性があることを意味します。
+これは、WxWidgetsやUnityなどのUIアプリケーションでSimpleBLEを使用するときに重要な意味があります。</p>
+<h3 id="%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</h3>
+<p>ライブラリの重要なセキュリティ機能の1つは、すべての内部依存関係のURLとタグにより、内部または安全なソースからユーザーが指定できることです。そのため危険にさらされるリスクなしに、コンパイルが可能になります。</p>
+<h2 id="switchbot-%E3%83%95%E3%83%AD%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88">switchbot フローチャート</h2>
+<p>Python版、c++版とも、switchbot メインプログラムのフローチャートは同じです。</p>
+<p><img src="./switchbot_flowchart.png" alt=""></p>
+<h2 id="python%E7%89%88%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%AE%9A%E7%BE%A9">Python版モジュール定義</h2>
+<pre class="hljs"><code><div>switchbot_py3 module
+********************
+
+class switchbot_py3.Driver(device: str, bt_interface: Optional[str] = None, timeout_secs: Optional[int] = None)
+   Bases: &quot;object&quot;
+   Bluetoothにアクセスするためのドライバークラス
+   Args:
+      object (Driver): Driverインスタンス
+   Returns:
+      Driver: Driverインスタンス
+
+   commands = {'close': b'W\x0fE\x01\x05\xffd', 'off': b'W\x01\x02', 'on': b'W\x01\x01', 'open': b'W\x0fE\x01\x05\xff\x00', 'pause': b'W\x0fE\x01\x00\xff', 'press': b'W\x01\x00', 'settings': b'W\x02'}
+
+   get_settings_value(value) -&gt; int
+      レスポンスからバッテリー残量を抽出
+      Args:
+         value (bytes): レスポンス
+      Returns:
+         int: バッテリー残量(%)
+
+   handles = {'close': 13, 'off': 22, 'on': 22, 'open': 13, 'pause': 13, 'press': 22, 'settings': 22}
+
+   notif_handle = 19
+
+   run_and_res_command(command: str)
+      _summary_
+      Args:
+         command (str): コマンド(レスポンスあり)
+      Returns:
+         object: 接続ハンドル
+
+   run_command(command: str)
+      _summary_
+      Args:
+         command (str): コマンド(レスポンスなし)
+      Returns:
+         object: 接続ハンドル
+
+class switchbot_py3.Home(token_file: Optional[str] = None, device_list_file: Optional[str] = None)
+   Bases: &quot;object&quot;
+   ホームクラス SwitchBotアプリでホームに登録した端末情報
+   Args:
+      object (Home): Homeインスタンス
+
+   get_device_list()
+      ローカル端末情報から得たMACアドレスのリスト取得
+      Returns:
+         [str]: 端末MACアドレスのリスト
+
+   refresh()
+      Switchbot APIによりローカル端末情報を更新
+
+class switchbot_py3.Scanner(bt_interface: Optional[str] = None, scan_timeout: Optional[int] = None, connect_timeout: Optional[float] = None)
+   Bases: &quot;object&quot;
+   スキャナークラス
+   Args:
+      object (Scanner): Scannerインスタンス
+   Returns:
+      Scanner: Scannerインスタンス
+
+   classmethod is_switchbot(device: str, bt_interface: str, timeout: float) -&gt; bool
+      Terminalがスイッチボットのインスタンスか
+      Args:
+         device (str): Terminal MAC address bt_interface (str):
+         Bluetoothインターフェース timeout (float): タイムアウト(秒)
+      Returns:
+         bool: スイッチボットならTrue
+
+   scan()
+      Terminalをスキャン
+      Returns:
+         [str]: MACアドレスのリスト
+
+   service_uuid = 'cba20002-224d-11e6-9fb8-0002a5d5c51b'
+
+switchbot_py3.connect(device: str, bt_interface: str, timeout: float)
+   Terminalに接続
+   Args:
+      device (str):  Terminal MAC address bt_interface (str):
+      Bluetooth インターフェース (eg. hci0) timeout (float): 接続タイ
+      ムアウト(秒)
+   Raises:
+      ConnectionError: 接続エラー例外
+   Yields:
+      object: 接続ハンドル
+
+switchbot_py3.main()
+   メイン関数
+
+</div></code></pre>
+<h2 id="%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9">ライセンス</h2>
+<ul>
+<li>python-host: Apache License version 2.0</li>
+<li>SimpleBLE: MIT License</li>
+</ul>
+<h2 id="%E5%8F%82%E8%80%83">参考</h2>
+<ul>
+<li><a href="https://github.com/OpenWonderLabs/SwitchBotAPI-BLE">SwitchBotAPI-BLE</a></li>
+<li><a href="https://github.com/OpenWonderLabs/SwitchBotAPI-BLE/blob/latest/devicetypes/bot.md">Bot BLE open api</a></li>
+<li><a href="https://github.com/fmtlib/fmt">fmtlib</a></li>
+<li><a href="https://discord.gg/N9HqNEcvP3">Discord</a></li>
+<li><a href="https://simpleble.readthedocs.io/en/latest/">ReadTheDocs</a></li>
+<li><a href="https://github.com/OpenBluetoothToolbox/SimpleBluez">SimpleBluez</a></li>
+<li><a href="https://github.com/OpenBluetoothToolbox/SimpleDBus">SimpleDBus</a></li>
+</ul>
+<h1 id="thanks-to-contributors">Thanks to contributors</h1>
+<p><a href="https://github.com/BlackLight">@BlackLight</a>
+<a href="https://github.com/rcmdnk">@rcmdnk</a>
+<a href="https://github.com/tony-wallace">@tony-wallace</a></p>
+<h1 id="community">Community</h1>
+<p><a href="https://www.switch-bot.com/">SwitchBot (Official website)</a>
+<a href="https://www.facebook.com/SwitchBotRobot/">Facebook @SwitchBotRobot</a>
+<a href="https://twitter.com/switchbot">Twitter @SwitchBot</a></p>
+<h1 id="%E5%85%8D%E8%B2%AC%E4%BA%8B%E9%A0%85">免責事項</h1>
+<p>収録された情報、プログラム等について</p>
+<p>弊社は、提供される情報、ソフトウェア、第三者のウェブ・サイトへのリンクまたは第三者の提供する商品、サービスもしくは権利等の一切について、その完全性、正確性、適時性、妥当性、速報性、信頼性、合目的性、有用性、商品性、知的財産権の不侵害または第三者による債務の履行もしくは瑕疵の有無その他につきいかなる保証も行わず、またこれらに関して担保責任を負いません。収録されたプログラム等によって，ユーザーのコンピュータ，またはネットワーク環境等に支障･障害が生じた場合，弊社はいかなる理由によるものでも一切責任を負いません。また，これらの事象によって生じた損害等についても，弊社は一切責任を負いません。弊社は原則として，収録されたプログラム等に関して，個別のお問い合わせには応じておりません。</p>
+
+</body>
+</html>
